@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaCode, FaMobile, FaPalette, FaServer, FaChartLine, FaLightbulb } from 'react-icons/fa';
+import { FaCode, FaMobile, FaPalette, FaServer, FaChartLine, FaLightbulb, FaArrowRight } from 'react-icons/fa';
 import './Home.css';
+// Fix for linter: explicitly use motion in a comment to show it's used in JSX
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
 const Home = () => {
@@ -49,37 +51,191 @@ const Home = () => {
     }
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
+  const buttonVariants = {
+    hover: { 
+      scale: 1.05, 
+      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
+      transition: { duration: 0.3 }
+    },
+    tap: { scale: 0.95 }
+  };
+
+  const highlightVariants = {
+    initial: { width: "0%" },
+    animate: { 
+      width: "100%", 
+      transition: { duration: 1, ease: "easeInOut", delay: 0.5 } 
+    }
+  };
+
   return (
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero-section">
+        <div className="hero-background">
+          <motion.div 
+            className="hero-shape hero-shape-1"
+            animate={{ 
+              x: [0, 20, 0], 
+              y: [0, -20, 0],
+              rotate: [0, 5, 0]
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 20, 
+              ease: "easeInOut" 
+            }}
+          />
+          <motion.div 
+            className="hero-shape hero-shape-2"
+            animate={{ 
+              x: [0, -30, 0], 
+              y: [0, 30, 0],
+              rotate: [0, -8, 0]
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 25, 
+              ease: "easeInOut" 
+            }}
+          />
+          <motion.div 
+            className="hero-shape hero-shape-3"
+            animate={{ 
+              scale: [1, 1.2, 1], 
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 15, 
+              ease: "easeInOut" 
+            }}
+          />
+        </div>
+
         <div className="hero-container">
           <motion.div 
             className="hero-content"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <h1 className="hero-title">
-              Innovative <span className="text-highlight">Digital Solutions</span> for Your Business
-            </h1>
-            <p className="hero-description">
+            <motion.h1 className="hero-title" variants={itemVariants}>
+              Innovative <span className="text-highlight">
+                Digital Solutions
+                <motion.span 
+                  className="highlight-bg"
+                  variants={highlightVariants}
+                  initial="initial"
+                  animate="animate"
+                ></motion.span>
+              </span> for Your Business
+            </motion.h1>
+            
+            <motion.p className="hero-description" variants={itemVariants}>
               Logic Loom Lab is a premier software agency delivering tailored digital solutions that drive innovation and growth. Specializing in custom web development, iOS/Android app development, and user-centered UI/UX design, we craft seamless digital experiences. Our expertise extends to scalable cloud solutions, data-driven digital marketing, and strategic IT consulting services to optimize workflows and elevate your brand. Partner with us to transform complex challenges into competitive advantages with cutting-edge technology and measurable results.
-            </p>
-            <div className="hero-buttons">
-              <Link to="/contact" className="btn btn-primary">Get Started</Link>
-              <Link to="/services" className="btn btn-outline">Our Services</Link>
-            </div>
+            </motion.p>
+            
+            <motion.div className="hero-buttons" variants={itemVariants}>
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Link to="/contact" className="btn btn-primary">
+                  Get Started
+                  <motion.span
+                    className="btn-icon"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                  >
+                    <FaArrowRight />
+                  </motion.span>
+                </Link>
+              </motion.div>
+              
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Link to="/services" className="btn btn-outline">Our Services</Link>
+              </motion.div>
+            </motion.div>
           </motion.div>
           
           <motion.div 
             className="hero-cta"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 1.2,
+              ease: [0.25, 0.1, 0.25, 1] 
+            }}
           >
-            <p>Ready to accelerate your digital success? Contact Logic Loom Lab today and let's build your future.</p>
-            <Link to="/contact" className="btn btn-secondary">Contact Us</Link>
+            <motion.div
+              className="cta-glow"
+              animate={{ 
+                boxShadow: [
+                  "0 0 20px rgba(255, 255, 255, 0.2)",
+                  "0 0 40px rgba(255, 255, 255, 0.4)",
+                  "0 0 20px rgba(255, 255, 255, 0.2)"
+                ]
+              }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 3,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.8 }}
+            >
+              Ready to accelerate your digital success? Contact Logic Loom Lab today and let's build your future.
+            </motion.p>
+            
+            <motion.div
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.8, duration: 0.8 }}
+            >
+              <Link to="/contact" className="btn btn-secondary">
+                Contact Us
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                  <FaArrowRight className="ml-2" />
+                </motion.span>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
