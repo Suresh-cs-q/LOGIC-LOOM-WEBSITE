@@ -222,17 +222,30 @@ const Home = () => {
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.8, duration: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1,
+                y: [0, -5, 0]
+              }}
+              transition={{ 
+                delay: 1.5, 
+                duration: 0.8,
+                y: {
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut"
+                }
+              }}
             >
-              <Link to="/contact" className="btn btn-secondary">
+              <Link to="/contact" className="btn btn-secondary btn-contact">
                 Contact Us
                 <motion.span
+                  className="btn-icon"
                   animate={{ x: [0, 5, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                  <FaArrowRight className="ml-2" />
+                  <FaArrowRight />
                 </motion.span>
               </Link>
             </motion.div>
