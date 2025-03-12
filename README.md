@@ -62,48 +62,6 @@ yarn dev
 
 The development server will start at `http://localhost:5173` (or another port if 5173 is in use)
 
-## 📧 EmailJS Setup
-
-The contact form uses EmailJS to send emails. To set it up:
-
-1. Create an account at [EmailJS](https://www.emailjs.com/)
-2. Create a new Email Service (Gmail recommended)
-3. Create a new Email Template with the following variables:
-   - `{{from_name}}` - Sender's name
-   - `{{from_email}}` - Sender's email
-   - `{{from_phone}}` - Sender's phone
-   - `{{subject}}` - Email subject
-   - `{{message}}` - Message content
-   - `{{to_email}}` - Your email address
-4. Update the EmailJS constants in `src/pages/Contact.jsx`:
-
-```javascript
-const EMAILJS_SERVICE_ID = "service_ulq584u";
-const EMAILJS_TEMPLATE_ID = "template_m74nwtk";
-const EMAILJS_USER_ID = "3tmln3qBmGoNoPCw7";
-```
-
-> Note: These credentials are already configured in the current version of the website.
-
-## 🚢 Deployment to Vercel
-
-### Automatic Deployment
-
-1. Push your code to a GitHub, GitLab, or Bitbucket repository
-2. Go to [Vercel](https://vercel.com/) and sign up/log in
-3. Click "New Project" and import your repository
-4. Vercel will automatically detect it's a Vite project
-5. Configure project settings if needed
-6. Click "Deploy"
-
-### Custom Domain Setup
-
-1. After deployment, go to your project dashboard
-2. Navigate to "Settings" > "Domains"
-3. Add your domain: `logicloomlab.tech`
-4. Follow Vercel's instructions to configure DNS settings at your domain registrar
-5. Wait for DNS propagation (can take up to 48 hours)
-
 ## 📁 Project Structure
 
 ```
@@ -167,9 +125,6 @@ The website is fully responsive with breakpoints at:
 - Safari (latest)
 - Edge (latest)
 
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
@@ -177,4 +132,4 @@ Suresh Kumar - [logicloomlab.tech](https://logicloomlab.tech)
 
 ---
 
-© 2024 Logic Loom Lab. All Rights Reserved.
+© 2025 Logic Loom Lab. All Rights Reserved.
