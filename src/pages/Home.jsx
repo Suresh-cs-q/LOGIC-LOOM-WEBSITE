@@ -81,14 +81,6 @@ const Home = () => {
     tap: { scale: 0.95 }
   };
 
-  const highlightVariants = {
-    initial: { width: "0%" },
-    animate: { 
-      width: "100%", 
-      transition: { duration: 1, ease: "easeInOut", delay: 0.5 } 
-    }
-  };
-
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -142,19 +134,89 @@ const Home = () => {
             animate="visible"
           >
             <motion.h1 className="hero-title" variants={itemVariants}>
-              Innovative <span className="text-highlight">
-                Digital Solutions
-                <motion.span 
-                  className="highlight-bg"
-                  variants={highlightVariants}
-                  initial="initial"
-                  animate="animate"
-                ></motion.span>
-              </span> for Your Business
+              <span className="text-dark">Innovative Digital</span>{" "}
+              <span className="text-white">Solutions for Your</span>{" "}
+              <span className="text-dark">Business</span>
             </motion.h1>
             
             <motion.p className="hero-description" variants={itemVariants}>
-              Logic Loom Lab is a premier software agency delivering tailored digital solutions that drive innovation and growth. Specializing in custom web development, iOS/Android app development, and user-centered UI/UX design, we craft seamless digital experiences. Our expertise extends to scalable cloud solutions, data-driven digital marketing, and strategic IT consulting services to optimize workflows and elevate your brand. Partner with us to transform complex challenges into competitive advantages with cutting-edge technology and measurable results.
+              <motion.span 
+                className="company-name"
+                initial={{ color: "var(--white)" }}
+                animate={{ 
+                  color: ["var(--white)", "#ffcc00", "var(--white)"],
+                  textShadow: ["0 0 0px rgba(255,255,255,0)", "0 0 12px rgba(255,204,0,0.7)", "0 0 0px rgba(255,255,255,0)"]
+                }}
+                transition={{ duration: 3, repeat: Infinity, repeatDelay: 5 }}
+              >
+                <strong>Logic Loom Lab</strong>
+              </motion.span> is a premier software agency delivering <strong>tailored digital solutions</strong> that drive innovation and growth. Specializing in <motion.span 
+                className="highlight-service"
+                whileHover={{ 
+                  color: "#ffcc00",
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "0 5px",
+                  borderRadius: "4px",
+                  textShadow: "0 0 5px rgba(255, 204, 0, 0.5)"
+                }}
+              ><strong>custom web development</strong></motion.span>, <motion.span 
+                className="highlight-service"
+                whileHover={{ 
+                  color: "#ffcc00",
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "0 5px",
+                  borderRadius: "4px",
+                  textShadow: "0 0 5px rgba(255, 204, 0, 0.5)"
+                }}
+              ><strong>iOS/Android app development</strong></motion.span>, and <motion.span 
+                className="highlight-service"
+                whileHover={{ 
+                  color: "#ffcc00",
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "0 5px",
+                  borderRadius: "4px",
+                  textShadow: "0 0 5px rgba(255, 204, 0, 0.5)"
+                }}
+              ><strong>user-centered UI/UX design</strong></motion.span>, we craft seamless digital experiences. Our expertise extends to <motion.span 
+                className="highlight-service"
+                whileHover={{ 
+                  color: "#ffcc00",
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "0 5px",
+                  borderRadius: "4px",
+                  textShadow: "0 0 5px rgba(255, 204, 0, 0.5)"
+                }}
+              ><strong>scalable cloud solutions</strong></motion.span>, <motion.span 
+                className="highlight-service"
+                whileHover={{ 
+                  color: "#ffcc00",
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "0 5px",
+                  borderRadius: "4px",
+                  textShadow: "0 0 5px rgba(255, 204, 0, 0.5)"
+                }}
+              ><strong>data-driven digital marketing</strong></motion.span>, and <motion.span 
+                className="highlight-service"
+                whileHover={{ 
+                  color: "#ffcc00",
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "0 5px",
+                  borderRadius: "4px",
+                  textShadow: "0 0 5px rgba(255, 204, 0, 0.5)"
+                }}
+              ><strong>strategic IT consulting</strong></motion.span> services to optimize workflows and elevate your brand. Partner with us to <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ 
+                  color: ["var(--white)", "#ffcc00", "var(--white)"],
+                  textShadow: ["0 0 0px rgba(0,0,0,0)", "0 0 10px rgba(0,0,0,0.8)", "0 0 0px rgba(0,0,0,0)"],
+                  y: [0, -2, 0]
+                }}
+                transition={{ 
+                  duration: 2.5, 
+                  repeat: Infinity, 
+                  repeatDelay: 3
+                }}
+              ><strong>transform complex challenges into competitive advantages</strong></motion.span> with cutting-edge technology and measurable results.
             </motion.p>
             
             <motion.div className="hero-buttons" variants={itemVariants}>
