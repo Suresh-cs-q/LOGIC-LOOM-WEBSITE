@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaCode, FaMobile, FaPalette, FaServer, FaChartLine, FaLightbulb, FaArrowRight, FaUsers, FaMicrochip, FaHandshake, FaChartBar } from 'react-icons/fa';
+import { FaCode, FaMobile, FaPalette, FaServer, FaChartLine, FaLightbulb, FaArrowRight } from 'react-icons/fa';
 import './Home.css';
 // Fix for linter: explicitly use motion in a comment to show it's used in JSX
 // eslint-disable-next-line no-unused-vars
@@ -255,173 +255,22 @@ const Home = () => {
 
       {/* Services Overview Section */}
       <section className="section services-overview">
-        <div className="services-bg-shapes">
-          <motion.div 
-            className="services-shape services-shape-1"
-            animate={{ 
-              y: [0, -30, 0],
-              rotate: [0, 15, 0]
-            }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 20,
-              ease: "easeInOut" 
-            }}
-          />
-          <motion.div 
-            className="services-shape services-shape-2"
-            animate={{ 
-              x: [0, 30, 0],
-              rotate: [0, -10, 0]
-            }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 25,
-              ease: "easeInOut" 
-            }}
-          />
-        </div>
-        
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="services-header"
-          >
-            <motion.h2 
-              className="services-title"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Our Services
-              <motion.span 
-                className="services-title-underline"
-                initial={{ width: 0 }}
-                whileInView={{ width: "80px" }}
-                transition={{ duration: 1, delay: 0.5 }}
-                viewport={{ once: true }}
-              />
-            </motion.h2>
-            <motion.p 
-              className="services-subtitle"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              We offer a comprehensive range of software development and digital services
-            </motion.p>
-          </motion.div>
+          <h2 className="section-title">Our Services</h2>
+          <p className="section-subtitle">
+            We offer a comprehensive range of software development and digital services
+          </p>
 
-          <motion.div 
-            className="services-grid"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <div className="services-grid">
             {services.map((service, index) => (
-              <motion.div 
-                key={index} 
-                className="service-card"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.7, 
-                  delay: 0.2 + (index * 0.1),
-                  ease: "easeOut"
-                }}
-                viewport={{ once: true, amount: 0.1 }}
-                whileHover={{ 
-                  y: -10, 
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <motion.div 
-                  className="service-icon-wrapper"
-                  whileHover={{ 
-                    rotate: 5,
-                    scale: 1.1,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <motion.div 
-                    className="service-icon"
-                    initial={{ background: "var(--primary-light)" }}
-                    whileHover={{ 
-                      background: "var(--primary-color)",
-                      transition: { duration: 0.3 }
-                    }}
-                  >
-                    <motion.div
-                      initial={{ color: "var(--primary-color)" }}
-                      whileHover={{ 
-                        color: "var(--white)",
-                        scale: 1.2,
-                        transition: { duration: 0.3 }
-                      }}
-                    >
-                      {service.icon}
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-                
-                <motion.h3 
-                  className="service-title"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
-                  viewport={{ once: true }}
-                >
-                  {service.title}
-                </motion.h3>
-                
-                <motion.p 
-                  className="service-description"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-                  viewport={{ once: true }}
-                >
-                  {service.description}
-                </motion.p>
-                
-                <motion.div
-                  className="service-link-wrapper"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
-                  viewport={{ once: true }}
-                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
-                >
-                  <Link to={service.link} className="service-link">
-                    Learn More
-                    <motion.span
-                      className="service-link-arrow"
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5 }}
-                    >
-                      <FaArrowRight />
-                    </motion.span>
-                  </Link>
-                </motion.div>
-                
-                <motion.div 
-                  className="service-card-glow"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ 
-                    opacity: 0.7,
-                    transition: { duration: 0.3 }
-                  }}
-                />
-              </motion.div>
+              <div key={index} className="service-card">
+                <div className="service-icon">{service.icon}</div>
+                <h3 className="service-title">{service.title}</h3>
+                <p className="service-description">{service.description}</p>
+                <Link to={service.link} className="service-link">Learn More</Link>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -525,209 +374,73 @@ const Home = () => {
 };
 
 const WhyChooseUs = () => {
-  // Icons for the cards
-  const cardIcons = [
-    <FaUsers key="users" />,
-    <FaMicrochip key="microchip" />,
-    <FaHandshake key="handshake" />,
-    <FaChartBar key="chart" />,
-    <FaLightbulb key="lightbulb" />
-  ];
-  
   return (
     <section className="why-choose-section">
-      <div className="why-choose-bg">
-        <motion.div 
-          className="why-choose-shape why-choose-shape-1"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ 
-            repeat: Infinity, 
-            duration: 15,
-            ease: "easeInOut" 
-          }}
-        />
-        <motion.div 
-          className="why-choose-shape why-choose-shape-2"
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.15, 0.05]
-          }}
-          transition={{ 
-            repeat: Infinity, 
-            duration: 20,
-            ease: "easeInOut" 
-          }}
-        />
-      </div>
-      
       <div className="why-choose-container">
-        <motion.div 
-          className="why-choose-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.h2 
-            className="why-choose-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Why Choose Us
-            <motion.span 
-              className="why-choose-title-underline"
-              initial={{ width: 0 }}
-              whileInView={{ width: "80px" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              viewport={{ once: true }}
-            />
-          </motion.h2>
-          
-          <motion.p 
-            className="why-choose-subtitle"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
+        <div className="why-choose-header">
+          <h2 className="why-choose-title">Why Choose Us</h2>
+          <p className="why-choose-subtitle">
             What sets us apart from other software development agencies
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
         
-        <motion.div 
-          className="why-choose-grid"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {[
-            {
-              number: "01",
-              title: "Expert Team",
-              description: "Our team consists of experienced developers, designers, and strategists who are passionate about creating exceptional digital experiences."
-            },
-            {
-              number: "02",
-              title: "Cutting-Edge Technology",
-              description: "We stay at the forefront of technology trends to deliver modern, scalable, and future-proof solutions for our clients."
-            },
-            {
-              number: "03",
-              title: "Client-Centric Approach",
-              description: "We prioritize understanding your business goals and challenges to deliver solutions that address your specific needs."
-            },
-            {
-              number: "04",
-              title: "Proven Results",
-              description: "Our track record of successful projects and satisfied clients speaks to our commitment to excellence and results."
-            },
-            {
-              number: "05",
-              title: "Innovative Solutions",
-              description: "We think outside the box to create innovative solutions that help your business stand out in today's competitive digital landscape."
-            }
-          ].map((item, index) => (
-            <motion.div 
-              key={index} 
-              className="why-choose-card"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.7, 
-                delay: 0.2 + (index * 0.1),
-                ease: "easeOut"
-              }}
-              viewport={{ once: true, amount: 0.1 }}
-              whileHover={{ 
-                y: -10, 
-                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-                transition: { duration: 0.3 }
-              }}
-            >
-              <motion.div 
-                className="card-highlight"
-                initial={{ height: "100%" }}
-              />
-              
-              <motion.div 
-                className="card-number"
-                initial={{ opacity: 0.1, scale: 1 }}
-                whileHover={{ 
-                  opacity: 0.2, 
-                  scale: 1.1,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                {item.number}
-              </motion.div>
-              
-              <motion.div className="card-content">
-                <motion.h3 
-                  className="card-title"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
-                  viewport={{ once: true }}
-                >
-                  {item.title}
-                  <motion.span
-                    className="card-title-highlight"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "30px" }}
-                    transition={{ duration: 0.8, delay: 0.6 + (index * 0.1) }}
-                    viewport={{ once: true }}
-                  />
-                </motion.h3>
-                
-                <motion.p 
-                  className="card-description"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-                  viewport={{ once: true }}
-                >
-                  {item.description}
-                </motion.p>
-              </motion.div>
-              
-              <motion.div 
-                className="card-icon"
-                whileHover={{ 
-                  rotate: 10,
-                  scale: 1.1,
-                  background: "var(--gradient-primary)",
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <motion.div
-                  initial={{ color: "var(--primary-color)" }}
-                  whileHover={{ 
-                    color: "var(--white)",
-                    scale: 1.1,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  {cardIcons[index]}
-                </motion.div>
-              </motion.div>
-              
-              <motion.div
-                className="card-glow"
-                initial={{ opacity: 0 }}
-                whileHover={{ 
-                  opacity: 0.1,
-                  transition: { duration: 0.3 }
-                }}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="why-choose-grid">
+          <div className="why-choose-card" style={{ '--animation-order': 0 }}>
+            <div className="card-number">01</div>
+            <div className="card-content">
+              <h3 className="card-title">Expert Team</h3>
+              <p className="card-description">
+                Our team consists of experienced developers, designers, and strategists 
+                who are passionate about creating exceptional digital experiences.
+              </p>
+            </div>
+            <div className="card-icon">
+              <i className="fas fa-users"></i>
+            </div>
+          </div>
+
+          <div className="why-choose-card" style={{ '--animation-order': 1 }}>
+            <div className="card-number">02</div>
+            <div className="card-content">
+              <h3 className="card-title">Cutting-Edge Technology</h3>
+              <p className="card-description">
+                We stay at the forefront of technology trends to deliver modern, 
+                scalable, and future-proof solutions for our clients.
+              </p>
+            </div>
+            <div className="card-icon">
+              <i className="fas fa-microchip"></i>
+            </div>
+          </div>
+
+          <div className="why-choose-card" style={{ '--animation-order': 2 }}>
+            <div className="card-number">03</div>
+            <div className="card-content">
+              <h3 className="card-title">Client-Centric Approach</h3>
+              <p className="card-description">
+                We prioritize understanding your business goals and challenges 
+                to deliver solutions that address your specific needs.
+              </p>
+            </div>
+            <div className="card-icon">
+              <i className="fas fa-handshake"></i>
+            </div>
+          </div>
+
+          <div className="why-choose-card" style={{ '--animation-order': 3 }}>
+            <div className="card-number">04</div>
+            <div className="card-content">
+              <h3 className="card-title">Proven Results</h3>
+              <p className="card-description">
+                Our track record of successful projects and satisfied clients 
+                speaks to our commitment to excellence and results.
+              </p>
+            </div>
+            <div className="card-icon">
+              <i className="fas fa-chart-bar"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
